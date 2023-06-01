@@ -37,6 +37,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(bodyparser.urlencoded({ extended: true })); //important for collecting post content
 app.use(express.static("public"));
+app.use(express.json());
 
 app.get("/", async (req, res) => {
   res.render("index");
@@ -136,10 +137,10 @@ app.post("/signup", async (req, res, next) => {
 });
 
 app.post("/bookride", async (req, res, next) => {
+
   const { pickup, destination } = req.body;
 
   const currentDate = new Date();
-
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
   const day = currentDate.getDate();
@@ -154,7 +155,7 @@ app.post("/bookride", async (req, res, next) => {
 
   const val = data.save();
 
-  res.send("in the ride booking section " + pickup)
+  // res.send("in the ride booking section " + pickup)
  })
 
 app.listen(3000, () => {

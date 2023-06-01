@@ -1,27 +1,55 @@
 <div class="col-lg-3 dashboard">
   <h3 class="welcometext">Welcome, <%= user.username %>!</h3>
-    <form  action="/bookride"  method="POST" >
-        <div class="mb-2">
-            <input
-            type="text"
-            class="form-control input"
-            id="pickup"
-            name="pickup"
-            placeholder="Enter Pickup Location"
-            />
-        </div>
-        <div class="mb-2">
-            <input
-            type="text"
-            class="form-control input "
-            id="destination"
-            name="destination"
-            placeholder="Enter your Destination"
-            />
-        </div>
-        <button type="submit" class="btn bookbutton">Book a Ride</button>
-    </form>
- <a class="btn dashbutton" href="/dashboard/<%=user._id%>">Dashboard</a>
+  <form id="bookride" onsubmit="handleSubmit(event)">
+    <div class="mb-2">
+      <input
+        type="text"
+        class="form-control input"
+        id="pickup"
+        name="pickup"
+        placeholder="Enter Pickup Location"
+      />
+    </div>
+    <div class="mb-2">
+      <input
+        type="text"
+        class="form-control input"
+        id="destination"
+        name="destination"
+        placeholder="Enter your Destination"
+      />
+    </div>
+    <button type="submit" class="btn bookbutton">Book a Ride</button>
+  </form>
+  <a class="btn dashbutton" href="/dashboard/<%=user._id%>">Dashboard</a>
   <a class="btn dashbutton" href="/activity/<%=user._id%>">Activity</a>
-  <a  class="btn dashbutton" href="/settings/<%=user._id%>">Settings</a>
+  <a class="btn dashbutton" href="/settings/<%=user._id%>">Settings</a>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    const payload = {
+      pickup: formData.get("pickup"),
+      destination: formData.get("destination"),
+    };
+
+    axios
+      .post("/bookride", payload)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        if(error){
+            console.log(error);
+            
+        }
+      });
+  }
+</script>
