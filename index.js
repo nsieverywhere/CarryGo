@@ -14,7 +14,16 @@ const userSchema = {
   lname: String,
 };
 
+const activitySchema = {
+  pickup: String,
+  destination: String,
+  date: String,
+
+}
+
 const usermodel = mongoose.model("users", userSchema);
+const activitymodel = mongoose.model("activity", activitySchema);
+
 
 mongoose.connect("mongodb://127.0.0.1/carrygo").then((err) => {
   if (err) {
@@ -59,6 +68,17 @@ app.get("/settings/:id", async (req, res) => {
     res.render("settings", { user: docs[0]});
   });
 });
+
+app.get("/activity/:id", async (req, res) => {
+  const userId = req.params.id;
+
+  const user = usermodel.find({ _id: userId }).then(function (docs) {
+
+    res.render("activity", { user: docs[0]});
+  });
+});
+
+// --------post section------
 
 // login section
 
@@ -114,6 +134,28 @@ app.post("/signup", async (req, res, next) => {
     }
   });
 });
+
+app.post("/bookride", async (req, res, next) => {
+  const { pickup, destination } = req.body;
+
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
+  const day = currentDate.getDate();
+  
+  const date = `${day}-${month}-${year}`;
+
+  const data = new activitymodel({
+    pickup: pickup,
+    destination: destination,
+    date: date,
+  });
+
+  const val = data.save();
+
+  res.send("in the ride booking section " + pickup)
+ })
 
 app.listen(3000, () => {
   console.log("server started!");

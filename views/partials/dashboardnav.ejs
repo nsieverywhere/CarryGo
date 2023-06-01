@@ -1,22 +1,27 @@
 <div class="col-lg-3 dashboard">
   <h3 class="welcometext">Welcome, <%= user.username %>!</h3>
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control input"
-      id="pickup"
-      placeholder="Enter your Pickup"
-    />
-  </div>
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control input"
-      id="destination"
-      placeholder="Enter your Destination"
-    />
-  </div>
- <a class="btn dashbutton" href="/book/<%=user._id%>">Book a Ride</a>
+    <form  action="/bookride"  method="POST" >
+        <div class="mb-2">
+            <input
+            type="text"
+            class="form-control input"
+            id="pickup"
+            name="pickup"
+            placeholder="Enter Pickup Location"
+            />
+        </div>
+        <div class="mb-2">
+            <input
+            type="text"
+            class="form-control input "
+            id="destination"
+            name="destination"
+            placeholder="Enter your Destination"
+            />
+        </div>
+        <button type="submit" class="btn bookbutton">Book a Ride</button>
+    </form>
+ <a class="btn dashbutton" href="/dashboard/<%=user._id%>">Dashboard</a>
   <a class="btn dashbutton" href="/activity/<%=user._id%>">Activity</a>
   <a  class="btn dashbutton" href="/settings/<%=user._id%>">Settings</a>
 </div>

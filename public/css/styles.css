@@ -115,12 +115,31 @@ footer {
 }
 
 .input {
-  height: 3rem;
+  height: 2.5rem;
   margin-bottom: .2rem;
   border-radius: 2rem;
   background-color: #EEEEEE;
 }
 
+
+
 .welcometext {
   margin-bottom: 1.5rem;
+}
+
+.bookbutton{
+  background-color: #1B9C85;
+  color: white;
+  height: 2.5rem;
+  margin-bottom: 2rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.bookbutton:hover {
+  background-color: #116858;
+  color: white;
 }
