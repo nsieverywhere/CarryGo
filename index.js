@@ -13,7 +13,7 @@ app.get("/", async (req, res) => {
 });
   
 app.get("/login", async (req, res) => {
-    res.render("login")
+   res.render("login")
    });
 
    app.get("/signup", async (req, res) => {
@@ -27,6 +27,16 @@ app.get("/login", async (req, res) => {
    app.get("/settings", async (req, res) => {
     res.render("settings")
    });
+
+   app.post('/login', (req, res) => {
+      res.send("POST Request Called")
+   })
+  
+   app.post('/signup', (req, res) => {
+      res.send("POST Request Called")
+  })
+
+
 
 app.listen(3000, () => {
     console.log("server started!");
