@@ -1,30 +1,15 @@
 <%- include('partials/header'); -%>
 
 <title>Dashboard</title>
-<link rel="stylesheet" href="/css/dashboard.css" />
 </head>
 <body>
-
     <div class="container-fluid dashcontainer">
         <div class="row">
-            <div class="col-lg-3 dashboard">
-                <div class="mb-3">
-                    <input type="text" class="form-control input" id="pickup" placeholder="Enter your Pickup">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control input" id="destination" placeholder="Enter your Destination">
-                  </div>
-                <button class="btn dashbutton">Book a Ride</button>
-                <button class="btn dashbutton">Activity</button>
-                <button class="btn dashbutton">Settings</button>
-
-            </div>
+            <%- include('partials/dashboardnav'); -%>
             <div class="col-lg-9">
-
+                dashboard
             </div>
-
         </div>
-
     </div>
 
  

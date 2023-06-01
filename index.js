@@ -42,11 +42,22 @@ app.get("/signup", async (req, res) => {
 });
 
 app.get("/dashboard/:id", async (req, res) => {
-  res.render("dashboard");
+  const userId = req.params.id;
+
+  const user = usermodel.find({ _id: userId }).then(function (docs) {
+
+    res.render("dashboard", { user: docs[0]});
+  });
+
 });
 
-app.get("/settings", async (req, res) => {
-  res.render("settings");
+app.get("/settings/:id", async (req, res) => {
+  const userId = req.params.id;
+
+  const user = usermodel.find({ _id: userId }).then(function (docs) {
+
+    res.render("settings", { user: docs[0]});
+  });
 });
 
 // login section
