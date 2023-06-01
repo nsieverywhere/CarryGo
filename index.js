@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyparser = require("body-parser");
 const axios = require("axios");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // create schema
@@ -41,7 +41,7 @@ app.get("/signup", async (req, res) => {
   res.render("signup");
 });
 
-app.get("/dashboard", async (req, res) => {
+app.get("/dashboard/:id", async (req, res) => {
   res.render("dashboard");
 });
 
@@ -52,31 +52,32 @@ app.get("/settings", async (req, res) => {
 // login section
 
 app.post("/login", async (req, res) => {
-   const { email, password } = req.body;
-   // usermodel.find()
+  const { email, password } = req.body;
+  // usermodel.find()
 
-   usermodel.find({ email: email })
-   .then(function (docs) {
-     if (docs[0] == undefined) {
-       res.status(400).json({ message: "User does not exist" });
-     } else {
-       bcrypt.compare(password, docs[0].password, function (err, result) {
-         if (result == true) {
-           res
-             .status(200)
-             .json({ userid: docs[0]._id, message: "Signing in" });
-           // sending the user id back to the front end as userid
-         } else {
-           res.status(400).json({ message: "Password is incorrect." });
-         }
-       });
-     }
-   })
-   .catch(function (err) {
-     console.log(err);
-   })
+  usermodel
+    .find({ email: email })
+    .then(function (docs) {
+      if (docs[0] == undefined) {
+        res.status(400).json({ message: "User does not exist" });
+      } else {
+        bcrypt.compare(password, docs[0].password, function (err, result) {
+          if (result == true) {
+            // res
+            //   .status(200)
+            //   .json({ userid: docs[0]._id, message: "Signing in" });
+            res.redirect(`/dashboard/${docs[0]._id}`);
 
-   res.redirect("/dashboard");
+            // sending the user id back to the front end as userid
+          } else {
+            res.status(400).json({ message: "Password is incorrect." });
+          }
+        });
+      }
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
 
   console.log("Login Successful");
 });
@@ -85,26 +86,22 @@ app.post("/login", async (req, res) => {
 app.post("/signup", async (req, res, next) => {
   const { name, email, password } = req.body;
 
-   usermodel.find({ email: email }).then(function (doc) {
-      if (doc[0] == undefined) {
-         bcrypt.hash(password, saltRounds, function async (err, hash) {
-           
-            const data = new usermodel({
-               username: name,
-               email: email,
-               password: hash,
-             });
-              
-             const val = data.save();
-             res.redirect("/login");
-             next();
-             console.log("Signup Successful");
+  usermodel.find({ email: email }).then(function (doc) {
+    if (doc[0] == undefined) {
+      bcrypt.hash(password, saltRounds, function async(err, hash) {
+        const data = new usermodel({
+          username: name,
+          email: email,
+          password: hash,
+        });
 
-        })
-     }
-  })
-   
-  
+        const val = data.save();
+        res.redirect("/login");
+        next();
+        console.log("Signup Successful");
+      });
+    }
+  });
 });
 
 app.listen(3000, () => {
