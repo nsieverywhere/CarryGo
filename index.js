@@ -18,11 +18,18 @@ const activitySchema = {
   pickup: String,
   destination: String,
   date: String,
+}
 
+const driverSchema = {
+  name: String,
+  age: String,
+  contact: String,
 }
 
 const usermodel = mongoose.model("users", userSchema);
-const activitymodel = mongoose.model("activity", activitySchema);
+const activitymodel = mongoose.model("activities", activitySchema);
+const drivermodel = mongoose.model("drivers", driverSchema);
+
 
 
 mongoose.connect("mongodb://127.0.0.1/carrygo").then((err) => {
@@ -39,6 +46,7 @@ app.use(bodyparser.urlencoded({ extended: true })); //important for collecting p
 app.use(express.static("public"));
 app.use(express.json());
 
+
 app.get("/", async (req, res) => {
   res.render("index");
 });
@@ -54,9 +62,12 @@ app.get("/signup", async (req, res) => {
 app.get("/dashboard/:id", async (req, res) => {
   const userId = req.params.id;
 
-  const user = usermodel.find({ _id: userId }).then(function (docs) {
+  const user = usermodel.find({ _id: userId }).then(function (userdocs) {
+    const driver = drivermodel.find().then(function (docs) {
 
-    res.render("dashboard", { user: docs[0]});
+      res.render("dashboard", { user: userdocs[0], drivers: docs });
+    
+    });
   });
 
 });
@@ -75,7 +86,10 @@ app.get("/activity/:id", async (req, res) => {
 
   const user = usermodel.find({ _id: userId }).then(function (docs) {
 
-    res.render("activity", { user: docs[0]});
+    const activity = activitymodel.find().then(function (activitydocs) {
+      res.render("activity", { user: docs[0], activity: activitydocs });
+    
+    });
   });
 });
 
@@ -137,6 +151,7 @@ app.post("/signup", async (req, res, next) => {
 });
 
 app.post("/bookride", async (req, res, next) => {
+  // res.setHeader('Content-Type', 'application/json')
 
   const { pickup, destination } = req.body;
 
@@ -154,8 +169,7 @@ app.post("/bookride", async (req, res, next) => {
   });
 
   const val = data.save();
-
-  // res.send("in the ride booking section " + pickup)
+  res.send("ride booked successfully")
  })
 
 app.listen(3000, () => {

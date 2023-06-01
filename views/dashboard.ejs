@@ -1,13 +1,30 @@
 <%- include('partials/header'); -%>
-
+<link rel="stylesheet" href="/css/dashboard.css" />
 <title>Dashboard</title>
 </head>
 <body>
     <div class="container-fluid dashcontainer">
         <div class="row">
             <%- include('partials/dashboardnav'); -%>
-            <div class="col-lg-9">
-                dashboard
+            <div class="col-lg-9 ">
+                    <h3>Need a ride? Book one now!</h3>
+                    <p>Our drivers are more than capable to take you on your journey.</p>
+                <div class="view">
+                    <div>
+                        <% drivers.map((driver, index)=>{ %>
+                              <div class="card" style="width: 18rem;">
+                                <!-- <img src="..." class="card-img-top" alt="..." /> -->
+                                <div class="card-body">
+                                <h5 class="card-title"><%= driver.name %></h5>
+                                <p class="card-text"><%= driver.age %></p>
+                                <a href="#" class="btn btn-primary"><%= driver.contact %></a>
+                                </div>
+                            </div>
+
+                        <% })   %>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 <%- include('partials/header'); -%>
 
+<link rel="stylesheet" href="/css/activity.css" />
 <title>Dashboard</title>
 </head>
 <body>
@@ -7,7 +8,31 @@
         <div class="row">
             <%- include('partials/dashboardnav'); -%>
             <div class="col-lg-9">
-                Activity
+                <h3>Your previous trips</h3>
+                
+                <table class="tablecontainer table table-dark table-hover">
+                    <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Pickup</th>
+                          <th scope="col">Destination</th>
+                          <th scope="col">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% activity.map((activity, index)=>{ %>
+                            <tr>
+                                <th scope="row"><%= index + 1 %></th>
+                                <td><%= activity.pickup %></td>
+                                <td><%= activity.destination %></td>
+                                <td><%= activity.date %></td>
+                              </tr>
+
+                        <% })   %>
+                        
+
+                    </tbody>  
+                </table>
             </div>
         </div>
     </div>
