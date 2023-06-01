@@ -1,0 +1,64 @@
+<%- include('partials/header'); -%>
+<title>CarryGo | Signup</title>
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+
+<div class="maincontainer container-fluid ">
+  <div class="row  containeritems">
+    <div class="col-lg-6">
+      <%- include('partials/welcomer'); -%>
+    </div>
+    <div class="col-lg-6 signupcontainer ">
+      <div class="signup">
+        <h1>Sign Up</h1>
+        <form>
+          <div class="mb-3">
+            <small for="name" class="form-label">Name</small>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <small for="email" class="form-label">Email address</small>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <small for="password" class="form-label">Password</small>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <small for="confirmPassword" class="form-label"
+              >Confirm Password</small
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary signupbtn">Sign Up</button>
+          <p>Already have an account?<a class="signuplink" href="/login">Login</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
