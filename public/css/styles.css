@@ -3,6 +3,12 @@ body {
   background-color: #E8F6EF;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-fluid{
+  flex: 1;
 }
 
 .maincontainer{
@@ -64,10 +70,13 @@ body {
   font-size: 1.5rem;
 }
 
+.logo {
+  width: 10rem;
+}
 
 footer {
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
   width: 100%;
   height: 50px;
   background-color: #2e2e42;
@@ -76,6 +85,7 @@ footer {
   text-align: center;
   font-size: .8rem;
   font-weight: lighter;
+  flex-shrink: 0;
 }
 
 
@@ -179,4 +189,26 @@ footer {
   color: white;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px){
+  .welcomer h1 {
+    font-size: 4rem;
+  }
+
+  .welcomer p {
+    font-size: 1.3rem;
+  }
+
+  .welcomer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  
+  footer{
+    /* display: none; */
+  }
 }

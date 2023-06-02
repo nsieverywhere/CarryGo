@@ -10,19 +10,21 @@
                     <h3>Need a ride? Book one now!</h3>
                     <p>Our drivers are more than capable to take you on your journey.</p>
                 <div class="view">
-                    <div>
-                        <% drivers.map((driver, index)=>{ %>
-                              <div class="card" style="width: 18rem;">
-                                <!-- <img src="..." class="card-img-top" alt="..." /> -->
-                                <div class="card-body">
-                                <h5 class="card-title"><%= driver.name %></h5>
-                                <p class="card-text"><%= driver.age %></p>
-                                <a href="#" class="btn btn-primary"><%= driver.contact %></a>
+                    <div class="container">
+                        <div class="row tablerow">
+                            <% drivers.map((driver, index)=>{ %>
+                                <div class="col-lg-4  tablecontainer">
+                                    <div class="card tableitem" style="width: 18rem;">
+                                        <!-- <img src="..." class="card-img-top" alt="..." /> -->
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%= driver.name %></h5>
+                                            <p class="card-text">Age: <%= driver.age %></p>
+                                            <a href="#" class="btn "><%= driver.contact %></a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                        <% })   %>
-                        
+                            <% })   %>
+                        </div>
                     </div>
                 </div>
             </div>
