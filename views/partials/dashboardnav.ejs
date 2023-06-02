@@ -21,6 +21,22 @@
         required
       />
     </div>
+    <div class="dropdown">
+        <button class=" btn dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Select a Driver
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <% drivers.map((driver, index)=>{ %>
+            <a class="dropdown-item" href="#" data-id="<%= driver.id %>"><%= driver.name %></a>
+            <% }); %>
+        </ul>
+    </div>
+        <input
+          type="text"
+          class="userid"
+          name="userid"
+            value="<%= user._id %>"
+          />
     <button type="submit" class="btn bookbutton">Book a Ride</button>
   </form>
   <a class="btn dashbutton" href="/dashboard/<%=user._id%>">Dashboard</a>
@@ -42,7 +58,7 @@
       <p>Try again later.</p>
     </div>
   </div>
-  <a class="logout" href="/">Logout</a>
+  <a class="logout" href="/"><img class="logoutimg" src="/images/logout.png" />Logout</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -74,6 +90,8 @@
     const payload = {
       pickup: formData.get("pickup"),
       destination: formData.get("destination"),
+      userid: formData.get("userid"),
+
     };
 
     axios

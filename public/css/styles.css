@@ -94,17 +94,29 @@ footer {
 
 .dashcontainer{
   padding: 3rem;
+  /* background-image: url('/images/map.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat;  */
 }
 
 .dashboard {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem 2rem;
   background-color: white;
-  height: 80vh;
+  height: 90vh;
   border-radius: 2rem;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
 
+
+}
+
+.drivers{
+  /* background-color: #EEEEEE; */
+  width: 100%;
+  margin-bottom: 1rem;
+  height: .5rem;
+  background-color: red;
 }
 
 .dashbutton{
@@ -119,12 +131,34 @@ footer {
 }
 
 .settingbutton{
-  margin-bottom: 0.3rem;
+  margin-bottom: 1.3rem;
+}
+
+.userid{
+ display: none;
+}
+
+.dropdown{
+  text-align: center;
+    height: 2rem;
+    margin-bottom: .5rem;
+    border-radius: 2rem;
+    background-color: #EEEEEE;
+}
+
+.dropdown-menu{
+  background-color: #EEEEEE;
 }
 
 .logout{
   text-decoration: none;
   color: #2E2E42;
+}
+
+.logoutimg{
+  width: 1.3rem;
+  margin-right: .5rem;
+
 }
 
 .dashbutton:hover {
@@ -143,7 +177,7 @@ footer {
 
 
 .welcometext {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .bookbutton{

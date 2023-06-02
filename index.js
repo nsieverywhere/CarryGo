@@ -18,6 +18,7 @@ const activitySchema = {
   pickup: String,
   destination: String,
   date: String,
+  userid: String,
 };
 
 const driverSchema = {
@@ -70,16 +71,23 @@ app.get("/settings/:id", async (req, res) => {
   const userId = req.params.id;
 
   const user = usermodel.find({ _id: userId }).then(function (docs) {
-    res.render("settings", { user: docs[0] });
+    const driver = drivermodel.find().then(function (driverdocs) {
+
+      res.render("settings", { user: docs[0], drivers: driverdocs });
+      
+    })
   });
 });
 
 app.get("/activity/:id", async (req, res) => {
   const userId = req.params.id;
-
   const user = usermodel.find({ _id: userId }).then(function (docs) {
-    const activity = activitymodel.find().then(function (activitydocs) {
-      res.render("activity", { user: docs[0], activity: activitydocs });
+    const activity = activitymodel.find({ userid: userId }).then(function (activitydocs) {
+      const driver = drivermodel.find().then(function (driverdocs) {
+
+        res.render("activity", { user: docs[0], activity: activitydocs, drivers: driverdocs });
+      
+      })
     });
   });
 });
@@ -144,7 +152,7 @@ app.post("/signup", async (req, res, next) => {
 app.post("/bookride", async (req, res, next) => {
   // res.setHeader('Content-Type', 'application/json')
 
-  const { pickup, destination } = req.body;
+  const { pickup, destination, userid } = req.body;
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -157,6 +165,7 @@ app.post("/bookride", async (req, res, next) => {
     pickup: pickup,
     destination: destination,
     date: date,
+    userid: userid,
   });
 
   const val = data.save();

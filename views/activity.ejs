@@ -6,7 +6,7 @@
 <body>
     <div class="container-fluid dashcontainer">
         <div class="row">
-            <%- include('partials/dashboardnav'); -%>
+            <%- include('partials/dashboardnav', {drivers: drivers }); -%>
             <div class="col-lg-9">
                 <h3>Your previous trips</h3>
                 
@@ -16,6 +16,7 @@
                           <th scope="col">#</th>
                           <th scope="col">Pickup</th>
                           <th scope="col">Destination</th>
+                          <th scope="col">Driver</th>
                           <th scope="col">Date</th>
                         </tr>
                       </thead>
@@ -25,8 +26,9 @@
                                 <th scope="row"><%= index + 1 %></th>
                                 <td><%= activity.pickup %></td>
                                 <td><%= activity.destination %></td>
+                                <td><%= activity.driver %></td>
                                 <td><%= activity.date %></td>
-                              </tr>
+                            </tr>
 
                         <% })   %>
                         

@@ -2,12 +2,12 @@
     margin-top: 2rem;
 }
 
-.btn{
+.mybtn{
     background-color: #2e2e42;
     color: white;
 }
 
-.btn:hover{
+.mybtn:hover{
     background-color: #116858;
     color: white;
 }

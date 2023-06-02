@@ -5,7 +5,7 @@
 <body>
     <div class="container-fluid dashcontainer">
         <div class="row">
-            <%- include('partials/dashboardnav'); -%>
+            <%- include('partials/dashboardnav', {drivers: drivers }); -%>
             <div class="col-lg-9 ">
                     <h3>Need a ride? Book one now!</h3>
                     <p class="mb-3">Our drivers are more than capable to take you on your journey.</p>
@@ -19,7 +19,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%= driver.name %></h5>
                                             <p class="card-text">Age: <%= driver.age %></p>
-                                            <a href="tel:<%=  driver.contact %>" class="btn ">Call</a>
+                                            <a href="tel:<%=  driver.contact %>" class="btn mybtn ">Call</a>
                                         </div>
                                     </div>
                                 </div>
