@@ -1,4 +1,5 @@
 <%- include('partials/header'); -%>
+<link rel="stylesheet" href="/css/settings.css" />
 
 <title>Settings</title>
 </head>
@@ -7,10 +8,73 @@
         <div class="row">
             <%- include('partials/dashboardnav'); -%>
             <div class="col-lg-9">
-                Settings
+                <h3>Settings</h3>
+                <div class="container">
+                    <form id="updateuser" >
+                      <label for="name">Name:</label>
+                      <input type="text" id="name" name="username" placeholder="<%= user.username %>" required>
+                
+                      <label for="email">Email:</label>
+                      <input type="email" id="email" name="email" placeholder="<%= user.email %>" required>
+                
+                      <label for="password">Password:</label>
+                      <input type="password" id="password" name="password" placeholder="" required>
+                
+                      <button type="submit">Save Changes</button>
+                      <p id="info"></p>
+                    </form>
+                  </div>
             </div>
         </div>
     </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        const form = document.getElementById('updateuser');
+        const info = document.getElementById('info');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); 
+
+            const username = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const payload = {
+                            username,
+                            email,
+                            password
+                        };
+
+    axios
+      .post("/settings", payload)
+      .then((response) => {
+        if (response.status === 200) {
+            info.textContent = "Details changed successfully!";
+            function myFunction() {
+                info.textContent = "";
+                }
+
+            setTimeout(myFunction, 2000);
+        } else {
+            info.textContent = 'An error occurred while saving user settings.';
+            function myFunction() {
+                info.textContent = "";
+                }
+
+            setTimeout(myFunction, 2000);
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
+      
+    })
+
+    </script>
 
  
 

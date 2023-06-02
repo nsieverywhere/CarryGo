@@ -18,19 +18,17 @@ const activitySchema = {
   pickup: String,
   destination: String,
   date: String,
-}
+};
 
 const driverSchema = {
   name: String,
   age: String,
   contact: String,
-}
+};
 
 const usermodel = mongoose.model("users", userSchema);
 const activitymodel = mongoose.model("activities", activitySchema);
 const drivermodel = mongoose.model("drivers", driverSchema);
-
-
 
 mongoose.connect("mongodb://127.0.0.1/carrygo").then((err) => {
   if (err) {
@@ -45,7 +43,6 @@ app.set("view engine", "ejs");
 app.use(bodyparser.urlencoded({ extended: true })); //important for collecting post content
 app.use(express.static("public"));
 app.use(express.json());
-
 
 app.get("/", async (req, res) => {
   res.render("index");
@@ -64,20 +61,16 @@ app.get("/dashboard/:id", async (req, res) => {
 
   const user = usermodel.find({ _id: userId }).then(function (userdocs) {
     const driver = drivermodel.find().then(function (docs) {
-
       res.render("dashboard", { user: userdocs[0], drivers: docs });
-    
     });
   });
-
 });
 
 app.get("/settings/:id", async (req, res) => {
   const userId = req.params.id;
 
   const user = usermodel.find({ _id: userId }).then(function (docs) {
-
-    res.render("settings", { user: docs[0]});
+    res.render("settings", { user: docs[0] });
   });
 });
 
@@ -85,10 +78,8 @@ app.get("/activity/:id", async (req, res) => {
   const userId = req.params.id;
 
   const user = usermodel.find({ _id: userId }).then(function (docs) {
-
     const activity = activitymodel.find().then(function (activitydocs) {
       res.render("activity", { user: docs[0], activity: activitydocs });
-    
     });
   });
 });
@@ -159,7 +150,7 @@ app.post("/bookride", async (req, res, next) => {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1; // Months are zero-based, so add 1
   const day = currentDate.getDate();
-  
+
   const date = `${day}-${month}-${year}`;
 
   const data = new activitymodel({
@@ -169,8 +160,24 @@ app.post("/bookride", async (req, res, next) => {
   });
 
   const val = data.save();
-  res.send("ride booked successfully")
- })
+  res.send("ride booked successfully");
+});
+
+app.post("/settings", async (req, res, next) => {
+  const { username, email, password } = req.body;
+
+  bcrypt.hash(password, saltRounds, function async(err, hash) {
+    usermodel
+      .findOneAndUpdate(
+        { email },
+        { username, email, password: hash },
+        { upsert: true, new: true }
+      )
+      .then(function () {
+        res.json({ message: 'User settings saved successfully!' });
+      });
+  });
+});
 
 app.listen(3000, () => {
   console.log("server started!");

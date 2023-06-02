@@ -118,6 +118,15 @@ footer {
   justify-content: center;
 }
 
+.settingbutton{
+  margin-bottom: 0.3rem;
+}
+
+.logout{
+  text-decoration: none;
+  color: #2E2E42;
+}
+
 .dashbutton:hover {
   background-color: #4B9C85;
   color: white;
