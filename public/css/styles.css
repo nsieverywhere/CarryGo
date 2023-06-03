@@ -227,14 +227,27 @@ footer {
 .navmobile {
   display: none;
 }
+/* 
+media query css
 
+*/
 @media (max-width: 991px) {
   .welcomer h1 {
-    font-size: 4rem;
+    font-size: 3rem;
+  }
+
+  .logo{
+    width: 8rem;
   }
 
   .welcomer p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+
+  .signupcontainer{
+    padding: 0;
   }
 
   .welcomer {
@@ -242,7 +255,7 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 4rem;
+    margin-top: 3rem;
   }
 
   footer {
