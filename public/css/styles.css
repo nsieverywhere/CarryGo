@@ -1,18 +1,18 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #E8F6EF;
+  background-color: #e8f6ef;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
 }
 
-.container-fluid{
+.container-fluid {
   flex: 1;
 }
 
-.maincontainer{
-  background-color: #E8F6EF;
+.maincontainer {
+  background-color: #e8f6ef;
   height: 100%;
 }
 
@@ -21,11 +21,10 @@ body {
   align-items: center;
 }
 
-.logincontainer{
+.logincontainer {
   display: flex;
   align-items: center;
   height: 100vh;
-
 }
 
 .signupcontainer {
@@ -37,24 +36,23 @@ body {
 .signup {
   width: 40rem;
   padding: 2.5rem;
-  background-color: #1B9C85;
+  background-color: #1b9c85;
   color: #f1f6f9;
   border-radius: 5px;
   box-shadow: 0 40px 40px rgba(0, 0, 0, 0.1);
 }
 
-.signupbtn{
+.signupbtn {
   width: 100%;
   margin-top: 1rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   background-color: #2e2e42;
   border: none;
-
 }
 
 .signuplink {
   color: white;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .welcomer {
@@ -83,16 +81,14 @@ footer {
   color: white;
   padding: 1rem;
   text-align: center;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: lighter;
   flex-shrink: 0;
 }
 
-
-
 /* dashboard global css  */
 
-.dashcontainer{
+.dashcontainer {
   padding: 3rem;
   /* background-image: url('/images/map.jpg');
   background-size: cover; 
@@ -109,16 +105,16 @@ footer {
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
 }
 
-.drivers{
+.drivers {
   /* background-color: #EEEEEE; */
   width: 100%;
   margin-bottom: 1rem;
-  height: .5rem;
+  height: 0.5rem;
   background-color: red;
 }
 
-.dashbutton{
-  background-color: #2E2E42;
+.dashbutton {
+  background-color: #2e2e42;
   color: white;
   height: 4rem;
   margin-bottom: 1rem;
@@ -128,58 +124,54 @@ footer {
   justify-content: center;
 }
 
-.settingbutton{
+.settingbutton {
   margin-bottom: 1.3rem;
 }
 
-.userid{
- display: none;
+.userid {
+  display: none;
 }
 
-.dropdown{
+.dropdown {
   text-align: center;
-    height: 2rem;
-    margin-bottom: .5rem;
-    border-radius: 2rem;
-    background-color: #EEEEEE;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+  border-radius: 2rem;
+  background-color: #eeeeee;
 }
 
-.dropdown-menu{
-  background-color: #EEEEEE;
+.dropdown-menu {
+  background-color: #eeeeee;
 }
 
-.logout{
+.logout {
   text-decoration: none;
-  color: #2E2E42;
+  color: #2e2e42;
 }
 
-.logoutimg{
+.logoutimg {
   width: 1.3rem;
-  margin-right: .5rem;
-
+  margin-right: 0.5rem;
 }
 
 .dashbutton:hover {
-  background-color: #4B9C85;
+  background-color: #4b9c85;
   color: white;
-
 }
 
 .input {
   height: 2.5rem;
-  margin-bottom: .2rem;
+  margin-bottom: 0.2rem;
   border-radius: 2rem;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
-
-
 
 .welcometext {
   margin-bottom: 1rem;
 }
 
-.bookbutton{
-  background-color: #1B9C85;
+.bookbutton {
+  background-color: #1b9c85;
   color: white;
   height: 2.5rem;
   margin-bottom: 2rem;
@@ -209,7 +201,7 @@ footer {
 }
 
 .modal-content {
-  background-color: #1B9C85;
+  background-color: #1b9c85;
   margin: 10% auto;
   padding: 20px;
   width: 60%;
@@ -232,11 +224,11 @@ footer {
   cursor: pointer;
 }
 
-.navmobile{
+.navmobile {
   display: none;
 }
 
-@media  (max-width: 768px){
+@media (max-width: 768px) {
   .welcomer h1 {
     font-size: 4rem;
   }
@@ -245,15 +237,15 @@ footer {
     font-size: 1.3rem;
   }
 
-  .welcomer{
+  .welcomer {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     margin-top: 4rem;
   }
-  
-  footer{
+
+  footer {
     display: none;
   }
 
@@ -263,42 +255,39 @@ footer {
     width: 100%;
     z-index: 3;
     height: 40%;
-    margin-left: 1rem;    
+    margin-left: 1rem;
     border-radius: 0;
     box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.205);
-    
-
   }
-  .welcometext, .dashbutton, .logoutimg, .logout {
+  .welcometext,
+  .dashbutton,
+  .logoutimg,
+  .logout {
     display: none;
   }
-  .dashcontainer{
+  .dashcontainer {
     padding: 0rem;
     margin-bottom: 13rem;
-
-
   }
-  .dashcontainermobile{
+  .dashcontainermobile {
     padding: 3rem;
     margin: auto;
     text-align: center;
-
   }
 
-  .activitymobile{
+  .activitymobile {
     padding-top: 3rem;
     margin: auto;
     text-align: center;
   }
 
-  .settingsmobile{
+  .settingsmobile {
     padding: 3rem;
-
   }
 
-  .navmobile{
+  .navmobile {
     display: block;
-    background-color: #4B9C85;
+    background-color: #4b9c85;
     height: 3rem;
     color: white;
   }
@@ -309,16 +298,12 @@ footer {
   }
 
   .navmobile a:hover {
-    background-color: #2E2E42;
-    
-
-
+    background-color: #2e2e42;
+  }
 }
-
 
 /* Medium devices (landscape tablets, 768px and up)
 @media only screen and (min-width: 768px) {} */
-
 
 /* Large devices (laptops/desktops, 992px and up) */
 /* @media only screen and (min-width: 992px) {} */
