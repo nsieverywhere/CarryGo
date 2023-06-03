@@ -7,7 +7,9 @@
     <div class="container-fluid dashcontainer">
         <div class="row">
             <%- include('partials/dashboardnav', {drivers: drivers }); -%>
-            <div class="col-lg-9">
+            <%- include('partials/mobilenav', {drivers: drivers }); -%>
+
+            <div class="col-lg-9 activitymobile">
                 <h3>Your previous trips</h3>
                 
                 <table class="tablecontainer table table-dark table-hover">

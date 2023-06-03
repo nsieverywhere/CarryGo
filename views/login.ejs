@@ -8,6 +8,9 @@
   <div class="row logincontainer">
     <div class="col-lg-6">
       <%- include('partials/welcomer'); -%>
+      <script>
+  
+      </script>
     </div>
     <div class="col-lg-6 signupcontainer">
       <div class="signup">
@@ -44,8 +47,25 @@
               >Signup</a
             >
           </p>
+          <% if (message) { %>
+            <div id="messageContainer" class="message">
+              <p><%= message %></p>
+            </div>
+          <% } %>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  const timeoutDuration = 2000;
+
+  const messageContainer = document.getElementById('messageContainer');
+
+  setTimeout(() => {
+    if (messageContainer) {
+      messageContainer.style.display = 'none'; // Hide the message container
+    }
+  }, timeoutDuration);
+</script>

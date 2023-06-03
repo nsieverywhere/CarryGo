@@ -107,8 +107,6 @@ footer {
   height: 90vh;
   border-radius: 2rem;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
-
-
 }
 
 .drivers{
@@ -234,7 +232,11 @@ footer {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px){
+.navmobile{
+  display: none;
+}
+
+@media  (max-width: 768px){
   .welcomer h1 {
     font-size: 4rem;
   }
@@ -252,15 +254,70 @@ footer {
   }
   
   footer{
-    /* display: none; */
+    display: none;
   }
+
+  .dashboard {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 3;
+    height: 40%;
+    margin-left: 1rem;    
+    border-radius: 0;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.205);
+    
+
+  }
+  .welcometext, .dashbutton, .logoutimg, .logout {
+    display: none;
+  }
+  .dashcontainer{
+    padding: 0rem;
+    margin-bottom: 13rem;
+
+
+  }
+  .dashcontainermobile{
+    padding: 3rem;
+    margin: auto;
+    text-align: center;
+
+  }
+
+  .activitymobile{
+    padding-top: 3rem;
+    margin: auto;
+    text-align: center;
+  }
+
+  .settingsmobile{
+    padding: 3rem;
+
+  }
+
+  .navmobile{
+    display: block;
+    background-color: #4B9C85;
+    height: 3rem;
+    color: white;
+  }
+  .navmobile a {
+    color: white;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .navmobile a:hover {
+    background-color: #2E2E42;
+    
+
+
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
+/* Medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: 768px) {} */
 
 
 /* Large devices (laptops/desktops, 992px and up) */

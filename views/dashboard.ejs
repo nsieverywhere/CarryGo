@@ -6,7 +6,10 @@
     <div class="container-fluid dashcontainer">
         <div class="row">
             <%- include('partials/dashboardnav', {drivers: drivers }); -%>
-            <div class="col-lg-9  ">
+            <%- include('partials/mobilenav', {drivers: drivers }); -%>
+            
+            <div class="col-lg-9 dashcontainermobile">
+                
                     <h3>Need a ride? Book one now!</h3>
                     <p class="mb-3">Our drivers are more than capable to take you on your journey.</p>
                 <div class="view">
@@ -28,6 +31,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

@@ -7,7 +7,9 @@
     <div class="container-fluid dashcontainer">
         <div class="row">
             <%- include('partials/dashboardnav'); -%>
-            <div class="col-lg-9">
+            <%- include('partials/mobilenav', {drivers: drivers }); -%>
+
+            <div class="col-lg-9 settingsmobile">
                 <h3>Settings</h3>
                 <div class="container">
                     <form id="updateuser" >
