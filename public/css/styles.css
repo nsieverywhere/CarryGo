@@ -234,10 +234,12 @@ media query css
 @media (max-width: 991px) {
   .welcomer h1 {
     font-size: 3rem;
+    margin-top: 1rem;
   }
 
   .logo{
     width: 8rem;
+    margin-bottom: 2rem;
   }
 
   .welcomer p {
@@ -248,6 +250,10 @@ media query css
 
   .signupcontainer{
     padding: 0;
+  }
+
+  .signup{
+    border-radius: 0;
   }
 
   .welcomer {
