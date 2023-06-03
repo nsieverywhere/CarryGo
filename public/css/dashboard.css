@@ -1,34 +1,36 @@
 .view {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
-.mybtn{
-    background-color: #2e2e42;
-    color: white;
+.mybtn {
+  background-color: #2e2e42;
+  color: white;
 }
 
-.mybtn:hover{
-    background-color: #116858;
-    color: white;
+.mybtn:hover {
+  background-color: #116858;
+  color: white;
 }
 
-.tableitem{
-    background-color: #ebebeb;
-    color: #2e2e42;
+.tableitem {
+  background-color: #ebebeb;
+  color: #2e2e42;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 991px) {
+  .tableitem {
+    text-align: center;
+    margin: auto;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+  }
 
-@media only screen and (max-width: 600px){
-    .tableitem{
-        text-align: center;
-        margin: auto;
-        margin-bottom: 2rem;
-
-    }
-
-    .tablerow {
-        align-items: center;
-        margin: auto;
-    }
+  .tablerow {
+    margin: auto;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
