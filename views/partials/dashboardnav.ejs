@@ -1,4 +1,4 @@
-<div class="col-lg-3 dashboard">
+<div class="col-lg-3 dashboard ">
   <h3 class="welcometext">Welcome, <%= user.username %>!</h3>
   <form id="bookride" onsubmit="handleSubmit(event)">
     <div class="mb-2">
@@ -22,21 +22,22 @@
       />
     </div>
     <div class="dropdown">
-        <button class=" btn dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class=" btn dropdown-toggle " type="button" id="driverdropdown" data-bs-toggle="dropdown" aria-expanded="false">
           Select a Driver
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <ul class="dropdown-menu" aria-labelledby="driverdropdown">
             <% drivers.map((driver, index)=>{ %>
-            <a class="dropdown-item" href="#" data-id="<%= driver.id %>"><%= driver.name %></a>
+                <a class="dropdown-item"  data-id="<%= driver.name %>"><%= driver.name %></a>
             <% }); %>
         </ul>
     </div>
-        <input
-          type="text"
-          class="userid"
-          name="userid"
-            value="<%= user._id %>"
-          />
+    <input type="hidden" id="selectedDriverInput" name="selectedDriverInput" value="">
+    <input
+        type="hidden"
+        class="userid"
+        name="userid"
+        value="<%= user._id %>"
+        />
     <button type="submit" class="btn bookbutton">Book a Ride</button>
   </form>
   <a class="btn dashbutton" href="/dashboard/<%=user._id%>">Dashboard</a>
@@ -81,6 +82,17 @@
   </script>
 
 <script>
+    
+    document.addEventListener('click', function(event) {
+        if (event.target.matches('.dropdown-item')) {
+        event.preventDefault();
+        var selectedDriver = event.target.dataset.id;
+        console.log(selectedDriver);
+        document.getElementById('selectedDriverInput').value = selectedDriver;
+        
+        }
+    });
+    
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -91,6 +103,7 @@
       pickup: formData.get("pickup"),
       destination: formData.get("destination"),
       userid: formData.get("userid"),
+      driver: formData.get('selectedDriverInput'),
 
     };
 

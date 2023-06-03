@@ -19,6 +19,7 @@ const activitySchema = {
   destination: String,
   date: String,
   userid: String,
+  driver: String,
 };
 
 const driverSchema = {
@@ -152,7 +153,7 @@ app.post("/signup", async (req, res, next) => {
 app.post("/bookride", async (req, res, next) => {
   // res.setHeader('Content-Type', 'application/json')
 
-  const { pickup, destination, userid } = req.body;
+  const { pickup, destination, userid, driver } = req.body;
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -166,6 +167,7 @@ app.post("/bookride", async (req, res, next) => {
     destination: destination,
     date: date,
     userid: userid,
+    driver: driver,
   });
 
   const val = data.save();
