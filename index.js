@@ -205,7 +205,7 @@ app.post("/settings", async (req, res, next) => {
     usermodel
       .findOneAndUpdate(
         { email },
-        { username, newemail, password: hash },
+        { username, email: newemail, password: hash },
         { upsert: true, new: true }
       )
       .then(function () {
