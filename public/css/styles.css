@@ -228,7 +228,7 @@ footer {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .welcomer h1 {
     font-size: 4rem;
   }
