@@ -117,9 +117,10 @@ app.get("/activity/:id", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
+  let newemail = email.toLowerCase();
 
   usermodel
-    .find({ email: email })
+    .find({ email: newemail })
     .then(function (docs) {
       if (docs[0] == undefined) {
         //   res.redirect("/?message=" + encodeURIComponent(message));
@@ -152,13 +153,14 @@ app.post("/login", async (req, res) => {
 // Signup section
 app.post("/signup", async (req, res, next) => {
   const { name, email, password } = req.body;
+  let newemail = email.toLowerCase();
 
-  usermodel.find({ email: email }).then(function (doc) {
+  usermodel.find({ email: newemail }).then(function (doc) {
     if (doc[0] == undefined) {
       bcrypt.hash(password, saltRounds, function async(err, hash) {
         const data = new usermodel({
           username: name,
-          email: email,
+          email: newemail,
           password: hash,
         });
 
