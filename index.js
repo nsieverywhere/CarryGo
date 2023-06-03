@@ -199,12 +199,13 @@ app.post("/bookride", async (req, res, next) => {
 
 app.post("/settings", async (req, res, next) => {
   const { username, email, password } = req.body;
+  let newemail = email.toLowerCase();
 
   bcrypt.hash(password, saltRounds, function async(err, hash) {
     usermodel
       .findOneAndUpdate(
         { email },
-        { username, email, password: hash },
+        { username, newemail, password: hash },
         { upsert: true, new: true }
       )
       .then(function () {
